@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div class = "homeHeader">
+        <div class ="homeHeaderLinks">
+          <a href="/travels">Home</a>
+          <a href="/logout">Logout</a>
+      </div>
+      <div class = "tripDetails">
+          <title>Destination</title>
+          {% for trip in travelgroup %}
+          <h3>{{trip.destination}}</h3>
+          {% endfor %}
+          {% for user in travelgroup %}
+          Planned By:  {{user.name}} <br>
+          Description: {{user.description}} <br>
+          Travel Date From: {{user.trip_start_dt}} <br>
+          Travel Date To: {{user.trip_end_dt}} <br>
+          {% endfor %}
+        </div>
+        <br>
+        <div class = "theGroup">
+          Other users joining the trip
+          <br>
+          {% for others in travelgroup %}
+            {{others.name}}
+          {% endfor %}
+        </div>
+  </body>
+</html>
